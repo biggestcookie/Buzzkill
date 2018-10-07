@@ -57,15 +57,15 @@ function growTrophy(score) {
     }
     switch (score) {
         case 1: {
-            trophy.src = '../img/trophy_bronze.png';
+            trophy.src = './img/trophy_bronze.png';
             break;
         }
         case 15: {
-            trophy.src = '../img/trophy_silver.png';
+            trophy.src = './img/trophy_silver.png';
             break;
         }
         case 30: {
-            trophy.src = '../img/trophy_gold.png';
+            trophy.src = './img/trophy_gold.png';
             break;
         }
     }
@@ -102,7 +102,7 @@ if (!('webkitSpeechRecognition' in window)) {
     recognition.onstart = function () {
         recognizing = true;
         showInfo('info_speak_now');
-        start_img.src = '../img/microphone_red.png';
+        start_img.src = './img/microphone_red.png';
         /*start_img.setAttribute('id', 'micOn');*/
         trophy.src = '';
         scoretag.textContent = '';
@@ -112,12 +112,12 @@ if (!('webkitSpeechRecognition' in window)) {
 
     recognition.onerror = function (event) {
         if (event.error == 'no-speech') {
-            start_img.src = '../img/microphone.png';
+            start_img.src = './img/microphone.png';
             showInfo('info_no_speech');
             ignore_onend = true;
         }
         if (event.error == 'audio-capture') {
-            start_img.src = '../img/microphone.png';
+            start_img.src = './img/microphone.png';
             showInfo('info_no_microphone');
             ignore_onend = true;
         }
