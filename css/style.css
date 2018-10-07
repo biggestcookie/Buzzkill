@@ -89,6 +89,28 @@ a:hover {
     display: block;
 }
 
+#scorebox {
+    margin-top: 20px;
+    height: 120px;
+}
+
+#scorebox:before {
+    content: "";
+    height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#trophybox, #score {
+    padding: 0 20px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#scoretag {
+    font-size: 1.5em;
+}
+
 #hero h1 {
     font-size: 5em;
     line-height: 210px;
@@ -105,14 +127,21 @@ a:hover {
     visibility: hidden;
 }
 
+#mic {
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
 #mic img{
     border: 2px solid #FFFFFF;
     border-radius: 50%;
     padding: 10px;    
 }
 
-#mic {
-    padding-bottom: 30px;
+#micOn img{
+    border: 2px solid #C2465D;
+    border-radius: 50%;
+    padding: 10px;    
 }
 
 #results {
@@ -133,6 +162,10 @@ a:hover {
     background: transparent;
     text-align: left;
     padding: 10px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 #start_button {

@@ -26,42 +26,45 @@
     </div>
     <div id="scorebox">
         <div id="trophybox">
-            <img id="trophy" src="" />
+            <img id="trophy" src="" style="height: 40px;" />
         </div>
-        <div id="score"></div>
+        <div id="score">
+            <div id="info">
+                <p id="final_score"></p>
+                <p id="info_start">
+                </p>
+                <p id="info_speak_now">
+                </p>
+                <p id="info_no_speech">
+                    No speech was detected. You may need to adjust your
+                    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>.
+                </p>
+                <p id="info_no_microphone" style="display:none">
+                    No microphone was found. Ensure that a microphone is installed and that
+                    <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>
+                    are configured correctly.
+                </p>
+                <p id="info_allow">
+                </p>
+                <p id="info_denied">
+                    Permission to use microphone was denied.
+                </p>
+                <p id="info_blocked">
+                    Permission to use microphone is blocked. To change,
+                    go to chrome://settings/contentExceptions#media-stream</p>
+                <p id="info_upgrade">
+                    Web Speech API is not supported by this browser.
+                    Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+                    version 25 or later.
+                </p>
+            </div>
+            <div id="scoretag"></div>
+        </div>
     </div>
 
-    <div id="info">
-        <p id="final_score"></p>
-        <p id="info_start">
-        </p>
-        <p id="info_speak_now">
-        </p>
-        <p id="info_no_speech">
-            No speech was detected. You may need to adjust your
-            <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>.
-        </p>
-        <p id="info_no_microphone" style="display:none">
-            No microphone was found. Ensure that a microphone is installed and that
-            <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>
-            are configured correctly.
-        </p>
-        <p id="info_allow">
-        </p>
-        <p id="info_denied">
-            Permission to use microphone was denied.
-        </p>
-        <p id="info_blocked">
-            Permission to use microphone is blocked. To change,
-            go to chrome://settings/contentExceptions#media-stream</p>
-        <p id="info_upgrade">
-            Web Speech API is not supported by this browser.
-            Upgrade to <a href="//www.google.com/chrome">Chrome</a>
-            version 25 or later.
-        </p>
-    </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="./js/words.js"></script>
     <script src="./js/script.js"></script>
 </body>
 
