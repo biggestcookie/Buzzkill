@@ -1,4 +1,4 @@
-let total_buzz_words = 20;
+let total_buzz_words = 19;
 
 function returnMap(wordList) {
     let wordMap = new Map();
@@ -207,7 +207,7 @@ if (!('webkitSpeechRecognition' in window)) {
 
         // Show the id of the final score.
         showInfo('final_score');
-        document.getElementById('final_score').innerHTML = "Your final score is " + final_score.toString();
+        document.getElementById('final_score').innerHTML = "Your final score is " + final_score.toString() + " / 10";
     };
 
     recognition.onresult = function (event) {
@@ -218,10 +218,12 @@ if (!('webkitSpeechRecognition' in window)) {
             } else {
                 interim_transcript += event.results[i][0].transcript;
                 score = calculateScoreLive(score, event.results[i][0].transcript);
+                console.log('Live score: ' + score);
             }
         }
         final_transcript = capitalize(final_transcript);
         final_score = calculateScoreFinalized(final_transcript);
+        console.log('Final score: ' + final_score);
         final_span.innerHTML = linebreak(final_transcript);
         interim_span.innerHTML = linebreak(interim_transcript);
     };
@@ -229,6 +231,7 @@ if (!('webkitSpeechRecognition' in window)) {
 
 function calculateScoreLive(score, transcript) {
     var words = transcript.split(" ");
+    console.log('Checking: ' + words[words.length - 1]);
     if (inMap(wordMap, words[words.length - 1])) {
         score++;
         return score;
@@ -260,7 +263,7 @@ function calculateScoreFinalized(final_transcript) {
         }
     }
 
-    cal_fin_score = cal_fin_score / total_buzz_words;
+    cal_fin_score = (cal_fin_score / total_buzz_words) * 10;
     return cal_fin_score;
 };
 
