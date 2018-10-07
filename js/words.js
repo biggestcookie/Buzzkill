@@ -1,4 +1,6 @@
 words = [
+    "cryptocurrency",
+    "deep learning",
     "adaptive",
     "agile",
     "ai",
