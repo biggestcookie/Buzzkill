@@ -1,3 +1,5 @@
+let total_buzz_words = 20;
+
 function returnMap(wordList) {
     let wordMap = new Map();
     for (i = 0; wordList.length > i; i++) {
@@ -49,6 +51,7 @@ function startButton(event) {
 }
 
 var score = 0;
+var final_score = 0;
 
 words = [
     "adaptive",
@@ -73,6 +76,8 @@ words = [
     "cloud-based",
     "cross-platform",
     "cyber",
+    "cyber-security",
+    "cybersecurity",
     "data mining",
     "dark web",
     "deep web",
@@ -85,6 +90,7 @@ words = [
     "framework",
     "functional",
     "gdpr",
+    "graphics processing",
     "hack",
     "hackathon",
     "hacker",
@@ -157,6 +163,7 @@ if (!('webkitSpeechRecognition' in window)) {
         showInfo('info_speak_now');
         start_img.src = '../img/mic-animate.gif';
         score = 0;
+        final_score = 0;
     };
 
     recognition.onerror = function (event) {
@@ -197,6 +204,10 @@ if (!('webkitSpeechRecognition' in window)) {
             range.selectNode(document.getElementById('final_span'));
             window.getSelection().addRange(range);
         }
+
+        // Show the id of the final score.
+        showInfo('final_score');
+        document.getElementById('final_score').innerHTML = "Your final score is " + final_score.toString();
     };
 
     recognition.onresult = function (event) {
@@ -207,12 +218,10 @@ if (!('webkitSpeechRecognition' in window)) {
             } else {
                 interim_transcript += event.results[i][0].transcript;
                 score = calculateScoreLive(score, event.results[i][0].transcript);
-                console.log("Live score: " + score);
             }
         }
         final_transcript = capitalize(final_transcript);
-        var final_score = calculateScoreFinalized(final_transcript);
-        console.log("Final score: " + final_score);
+        final_score = calculateScoreFinalized(final_transcript);
         final_span.innerHTML = linebreak(final_transcript);
         interim_span.innerHTML = linebreak(interim_transcript);
     };
@@ -220,7 +229,6 @@ if (!('webkitSpeechRecognition' in window)) {
 
 function calculateScoreLive(score, transcript) {
     var words = transcript.split(" ");
-    console.log('Checking: ' + words[words.length - 1]);
     if (inMap(wordMap, words[words.length - 1])) {
         score++;
         return score;
@@ -232,26 +240,28 @@ function calculateScoreFinalized(final_transcript) {
     // Our longest word phrase in the dictionary is 3 words. So we will look at
     // up to 2 words before and 2 words after to see if it matches anything.
     var words = final_transcript.split(" ");
-    var final_score = 0;
+    var cal_fin_score = 0;
     for (index in words) {
         try {
             if (inMap(wordMap, words[index])) {
-                final_score++;
+                cal_fin_score++;
             } else if (inMap(wordMap, words[index - 1] + " " + words[index])) { // 1 word before
-                final_score++;
+                cal_fin_score++;
             } else if (inMap(wordMap, words[index - 2] + " " + words[index - 1] + " " + words[index])) {// 2 words before
-                final_score++;
+                cal_fin_score++;
             } else if (inMap(wordMap, words[index] + " " + words[index + 1])) { // 1 word after
-                final_score++;
+                cal_fin_score++;
             } else if (inMap(wordMap, words[index] + " " + words[index + 1] + " " + words[index + 2])) { // 2 words after
-                final_score++;
+                cal_fin_score++;
             }
         } catch (err) {
             // do nothing.
             console.log(err);
         }
     }
-    return final_score;
+
+    cal_fin_score = cal_fin_score / total_buzz_words;
+    return cal_fin_score;
 };
 
 
