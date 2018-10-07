@@ -3,24 +3,39 @@
 
 <head>
     <meta charset="utf-8">
-    <title>OUR HACK!!!!</title>
+    <title>BUZZKILL</title>
     <link type="text/css" rel="stylesheet" href="./css/style.css">
 
 </html>
 
 <body>
-    <h1 class="center" id="headline">
-        🌊OCEAN MAN🌊
-        <br>
-        🏄‍🏄‍
-    </h1>
+    <div id="hero">
+        <h1 class="center">BUZZKILL</h1>
+    </div>
+    <div id="mic">
+        <button id="start_button" onclick="startButton(event)">
+            <img id="start_img" src="./img/microphone.png" alt="Start">
+        </button>
+    </div>
+    <div id="results">
+        <div id="resultbox">
+            <span id="final_span" class="final"></span>
+            <span id="interim_span" class="interim"></span>
+            <p></p>
+        </div>
+    </div>
+    <div id="scorebox">
+        <div id="trophybox">
+            <img id="trophy" src="" />
+        </div>
+        <div id="score"></div>
+    </div>
+
     <div id="info">
         <p id="final_score"></p>
         <p id="info_start">
-            Click on the microphone icon and begin speaking.
         </p>
         <p id="info_speak_now">
-            Speak now.
         </p>
         <p id="info_no_speech">
             No speech was detected. You may need to adjust your
@@ -32,7 +47,6 @@
             are configured correctly.
         </p>
         <p id="info_allow">
-            Click the "Allow" button above to enable your microphone.
         </p>
         <p id="info_denied">
             Permission to use microphone was denied.
@@ -45,19 +59,6 @@
             Upgrade to <a href="//www.google.com/chrome">Chrome</a>
             version 25 or later.
         </p>
-    </div>
-    <div class="right">
-        <button id="start_button" onclick="startButton(event)">
-            <img id="start_img" src="./img/mic.gif" alt="Start">
-        </button>
-    </div>
-    <div id="results">
-        <span id="final_span" class="final"></span>
-        <span id="interim_span" class="interim"></span>
-        <p></p>
-    </div>
-    <div id="score">
-        <img id="trophy" />
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>

@@ -44,10 +44,12 @@ function startButton(event) {
     ignore_onend = false;
     final_span.innerHTML = '';
     interim_span.innerHTML = '';
-    start_img.src = './img/mic-slash.gif';
     showInfo('info_allow');
-    // showButtons('none');
     start_timestamp = event.timeStamp;
+}
+
+function growTrophy(score) {
+
 }
 
 var score = 0;
@@ -161,19 +163,19 @@ if (!('webkitSpeechRecognition' in window)) {
     recognition.onstart = function () {
         recognizing = true;
         showInfo('info_speak_now');
-        start_img.src = '../img/mic-animate.gif';
+        start_img.src = '../img/microphone_red.png';
         score = 0;
         final_score = 0;
     };
 
     recognition.onerror = function (event) {
         if (event.error == 'no-speech') {
-            start_img.src = '../img/mic.gif';
+            start_img.src = '../img/microphone.png';
             showInfo('info_no_speech');
             ignore_onend = true;
         }
         if (event.error == 'audio-capture') {
-            start_img.src = '../img/mic.gif';
+            start_img.src = '../img/microphone.png';
             showInfo('info_no_microphone');
             ignore_onend = true;
         }
@@ -192,11 +194,12 @@ if (!('webkitSpeechRecognition' in window)) {
         if (ignore_onend) {
             return;
         }
-        start_img.src = './img/mic.gif';
+        start_img.src = './img/microphone.png';
         if (!final_transcript) {
             showInfo('info_start');
             return;
         }
+        final_score = calculateScoreFinalized(final_transcript);
         showInfo('');
         if (window.getSelection) {
             window.getSelection().removeAllRanges();
@@ -207,7 +210,8 @@ if (!('webkitSpeechRecognition' in window)) {
 
         // Show the id of the final score.
         showInfo('final_score');
-        document.getElementById('final_score').innerHTML = "Your final score is " + final_score.toString() + " / 10";
+        console.log('Final score: ' + final_score);
+        document.getElementById('final_score').innerHTML = "<span class=\"finalScore\">" + final_score.toString() + "</span> / 10";
     };
 
     recognition.onresult = function (event) {
@@ -221,9 +225,8 @@ if (!('webkitSpeechRecognition' in window)) {
                 console.log('Live score: ' + score);
             }
         }
+
         final_transcript = capitalize(final_transcript);
-        final_score = calculateScoreFinalized(final_transcript);
-        console.log('Final score: ' + final_score);
         final_span.innerHTML = linebreak(final_transcript);
         interim_span.innerHTML = linebreak(interim_transcript);
     };
@@ -247,14 +250,19 @@ function calculateScoreFinalized(final_transcript) {
     for (index in words) {
         try {
             if (inMap(wordMap, words[index])) {
+                final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index - 1] + " " + words[index])) { // 1 word before
+                final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index - 2] + " " + words[index - 1] + " " + words[index])) {// 2 words before
+                final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index] + " " + words[index + 1])) { // 1 word after
+                final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index] + " " + words[index + 1] + " " + words[index + 2])) { // 2 words after
+                final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
                 cal_fin_score++;
             }
         } catch (err) {
@@ -264,6 +272,8 @@ function calculateScoreFinalized(final_transcript) {
     }
 
     cal_fin_score = (cal_fin_score / total_buzz_words) * 10;
+    cal_fin_score = Math.round(cal_fin_score * 100) / 100;
+    final_span.innerHTML = final_transcript;
     return cal_fin_score;
 };
 
