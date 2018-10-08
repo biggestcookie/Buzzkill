@@ -4,3 +4,9 @@ A fantastic "serverless" voice recognition web app, built by and for HackGSU Fal
 
 Never fear, [BuzzKill](https://bigcooki3.github.io/Buzzkill-app/) is here!
 No dependencies or deployments needed -- just open this page on the web or download the files and launch away! Record those devilish entrepreneurs pitches in BuzzKill, and it'll tell you whether or not it's a run for your money. Give it a try!
+
+Uses Web Speech API and deployed on Google Cloud at [hip-hip-array.com](http://hip-hip-array.com).
+
+Created by myself, [Danny Lee](https://github.com/Wallou/), [Jen Lee](https://github.com/catsukidon/) and [Jennifer Lee](https://github.com/jenniferly/).
+
+[Devpost Link](https://devpost.com/software/buzzkill-app)
