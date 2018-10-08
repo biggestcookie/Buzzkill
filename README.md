@@ -10,3 +10,5 @@ Uses Web Speech API and deployed on Google Cloud at [hip-hip-array.com](http://h
 Created by myself, [Danny Lee](https://github.com/Wallou/), [Jen Lee](https://github.com/catsukidon/) and [Jennifer Lee](https://github.com/jenniferly/).
 
 [Devpost Link](https://devpost.com/software/buzzkill-app)
+
+[Demo Video](https://www.youtube.com/watch?v=MxWpS4CJPvg)
