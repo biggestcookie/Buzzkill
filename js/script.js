@@ -1,4 +1,4 @@
-let total_buzz_words = 10.34;
+let total_buzz_words = 7.34;
 
 function returnMap(wordList) {
     let wordMap = new Map();
@@ -60,11 +60,11 @@ function growTrophy(score) {
             trophy.src = './img/trophy_bronze.png';
             break;
         }
-        case 25: {
+        case 15: {
             trophy.src = './img/trophy_silver.png';
             break;
         }
-        case 45: {
+        case 30: {
             trophy.src = './img/trophy_gold.png';
             break;
         }
@@ -215,21 +215,21 @@ function calculateScoreFinalized(final_transcript) {
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index - 1] + " " + words[index])) { // 1 word before
                 final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
-                final_transcript = final_transcript.replace(words[index-1], "<span class=\"buzzword\">" + words[index-1] + "</span>");
+                final_transcript = final_transcript.replace(words[index - 1], "<span class=\"buzzword\">" + words[index - 1] + "</span>");
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index - 2] + " " + words[index - 1] + " " + words[index])) {// 2 words before
                 final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
-                final_transcript = final_transcript.replace(words[index-2], "<span class=\"buzzword\">" + words[index-2] + "</span>");
-                final_transcript = final_transcript.replace(words[index-1], "<span class=\"buzzword\">" + words[index-1] + "</span>");
+                final_transcript = final_transcript.replace(words[index - 2], "<span class=\"buzzword\">" + words[index - 2] + "</span>");
+                final_transcript = final_transcript.replace(words[index - 1], "<span class=\"buzzword\">" + words[index - 1] + "</span>");
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index] + " " + words[index + 1])) { // 1 word after
                 final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
-                final_transcript = final_transcript.replace(words[index+1], "<span class=\"buzzword\">" + words[index+1] + "</span>");
+                final_transcript = final_transcript.replace(words[index + 1], "<span class=\"buzzword\">" + words[index + 1] + "</span>");
                 cal_fin_score++;
             } else if (inMap(wordMap, words[index] + " " + words[index + 1] + " " + words[index + 2])) { // 2 words after
                 final_transcript = final_transcript.replace(words[index], "<span class=\"buzzword\">" + words[index] + "</span>");
-                final_transcript = final_transcript.replace(words[index+2], "<span class=\"buzzword\">" + words[index+2] + "</span>");
-                final_transcript = final_transcript.replace(words[index+1], "<span class=\"buzzword\">" + words[index+1] + "</span>");
+                final_transcript = final_transcript.replace(words[index + 2], "<span class=\"buzzword\">" + words[index + 2] + "</span>");
+                final_transcript = final_transcript.replace(words[index + 1], "<span class=\"buzzword\">" + words[index + 1] + "</span>");
                 cal_fin_score++;
             }
         } catch (err) {
