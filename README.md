@@ -7,7 +7,7 @@ No dependencies or deployments needed -- just open this page on the web or downl
 
 Uses Web Speech API and deployed on Google Cloud, previously at hip-hip-array.com , now at [https://biggestcookie.github.io/Buzzkill-app/](https://biggestcookie.github.io/Buzzkill-app/).
 
-Created by myself, [Danny Lee](https://github.com/Wallou/), [Jen Lee](https://github.com/catsukidon/) and [Jennifer Lee](https://github.com/jenniferly/).
+Created by myself, [Danny Lee](https://github.com/Wallou/), [Jen Lee](https://github.com/catsukidon/) and [Jennifer Ly](https://github.com/jenniferly/).
 
 [Devpost Link](https://devpost.com/software/buzzkill-app)
 
