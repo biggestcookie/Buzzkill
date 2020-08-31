@@ -1,4 +1,4 @@
-# [Buzzkill-app](https://biggestcookie.github.io/Buzzkill/)
+# [Buzzkill](https://biggestcookie.github.io/Buzzkill/)
 
 A fantastic "serverless" voice recognition web app, built by and for HackGSU Fall 2018.  Do you want to know whether or not to invest in this brand new cryptocurrency? Are you a clueless hackathon judge behind on the times and tech? 
 
